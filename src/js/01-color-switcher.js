@@ -1,27 +1,28 @@
-const PROMT_DELAY = 1000;
-let timeoutId = null;
-
-const startClick = document.querySelector('[data-start]');
-const stopClick = document.querySelector('[data-stop]');
-
-startClick.addEventListener('click', onClick);
-stopClick.addEventListener('click', offClick);
-stopClick.disabled = true;
-
-function onClick() {
-    if (startClick) {
-        stopClick.disabled = true;
-    }
-    timeoutId = setInterval(() => {
-        document.body.style.backgroundColor = getRandomHexColor();
-    }, PROMT_DELAY)
+const refs = {
+    btnStart: document.querySelector('[data-start]'),
+    btnStop: document.querySelector('[data-stop]')
 }
 
-function offClick() {
-    if (stopClick) {
-        startClick.disabled = false;
-    }
-    clearInterval(timeoutId); 
+let timeoutId = 0;
+refs.btnStop.disabled = true;
+
+refs.btnStart.addEventListener('click', onColorSwitcher);
+refs.btnStop.addEventListener('click', offColorSwitcher);
+
+function onColorSwitcher() {
+    timeoutId = setInterval(changeBackgroundColor, 1000);
+    refs.btnStart.disabled = true;
+    refs.btnStop.disabled = false;
+}
+
+function offColorSwitcher() {
+    clearInterval(timeoutId);
+    refs.btnStart.disabled = false;
+    refs.btnStop.disabled = true;
+}
+
+function changeBackgroundColor() {
+    document.body.style.backgroundColor = getRandomHexColor();
 }
 
 function getRandomHexColor() {
