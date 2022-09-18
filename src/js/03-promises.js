@@ -6,6 +6,7 @@ Notify.init({
   distance: '5px',
   opacity: 1,
   borderRadius: '10px',
+  rtl: true,
   timeout: 3000,
   messageMaxLength: 110,
   backOverlay: false,
@@ -40,7 +41,7 @@ function btnCreatePromises(e) {
   const amount = Number.parseInt(data.get('amount'));
   const delay = Number.parseInt(data.get('delay'));
   const step = Number.parseInt(data.get('step'));
-  
+
   for (let i = 0; i < amount; i += 1) {
     createPromise(i, delay + i * step)
       .then(({ position, delay }) => {
