@@ -1,6 +1,6 @@
 // Described in documentation and additional styles import
-import flatpickr from "flatpickr";
-import "flatpickr/dist/flatpickr.min.css";
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -60,9 +60,9 @@ function handleCountdownTimer(evt) {
     // Show something, if the countdown is finished
     if (!countdownTime) {
       clearInterval(coundownId);
-      Notify.success('It\'s happened!');
+      Notify.success("It's happened!");
     }
-    
+
     // Show the countdown if everything is ok
     displayCountdown(countdownTime);
   }, 1000);
@@ -101,7 +101,9 @@ function convertMs(ms) {
   // Remaining minutes
   const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
   // Remaining seconds
-  const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
+  const seconds = addLeadingZero(
+    Math.floor((((ms % day) % hour) % minute) / second)
+  );
 
   return { days, hours, minutes, seconds };
 }
