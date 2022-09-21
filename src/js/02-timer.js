@@ -54,12 +54,12 @@ flatpickr(refs.datetimeInput, flatpickrOptions);
 function handleCountdownTimer(evt) {
   evt.preventDefault();
 
-  const coundownId = setInterval(() => {
+  const countdownId = setInterval(() => {
     const countdownTime = checkValidDate(inputDate);
 
     // Show something, if the countdown is finished
     if (!countdownTime) {
-      clearInterval(coundownId);
+      clearInterval(countdownId);
       Notify.success("It's happened!");
     }
 
